@@ -3,6 +3,13 @@
 @section('content')
     <h1>Sono il comics.index</h1>
 
+    <a href="{{ route('comics.create') }}">
+        
+        <button>Aggiungi un comic</button>
+
+    </a>
+
+
     @foreach ($comics as $comic )
         <div>
             <img src="{{$comic->url}}" width="200" alt="">
