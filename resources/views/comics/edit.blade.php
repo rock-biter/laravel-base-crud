@@ -3,7 +3,7 @@
 @section('content')
 
 
-    <form action="{{ route('comics.update', $comic->id) }}" method="POST">
+    <form action="{{ route('admin.comics.update', $comic->id) }}" method="POST">
 
         @csrf
         @method('PATCH')

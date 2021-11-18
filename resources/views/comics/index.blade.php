@@ -2,12 +2,14 @@
 
 @section('content')
     <h1>Sono il comics.index</h1>
-
-    <a href="{{ route('comics.create') }}">
+    @auth
+        
+    <a href="{{ route('admin.comics.create') }}">
         
         <button>Aggiungi un comic</button>
 
     </a>
+    @endauth
 
 
     @foreach ($comics as $comic )

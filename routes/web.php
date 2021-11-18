@@ -17,8 +17,26 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/* Route::get('/comics', 'ComicController@index')->name('comics.index');
 
-Route::get('/comics/{id}', 'ComicController@show')->name('comics.show'); */
+Route::resource('comics', ComicController::class)->only([
+    'index', 'show'
+]);
 
-Route::resource('comics', ComicController::class);
+Route::middleware('auth')
+    ->namespace('Admin')
+    ->name('admin.')
+    ->prefix('admin')
+    ->group(function () {
+        Route::resource('comics', ComicController::class)->except([
+            'index', 'show'
+        ]);
+});
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+// Route::get('{any?}', function(){
+//     return view('guests.home');
+// })->where('any', '.*'); 

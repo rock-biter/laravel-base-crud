@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <form action="{{ route('comics.store') }}" method="POST">
+    <form action="{{ route('admin.comics.store') }}" method="POST">
 
         @csrf
 

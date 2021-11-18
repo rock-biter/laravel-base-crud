@@ -5,7 +5,12 @@
 
     <a href="{{ route('comics.index')}}">Back to comics</a>
 
-    <a href="{{ route('comics.edit', $comic->id)}}">go to edit</a>
+    @auth
+    
+        <a href="{{ route('admin.comics.edit', $comic->id)}}">go to edit</a>
+        
+    @endauth
+
 
     <div>
         <img src="{{$comic->url}}" width="200" alt="">
@@ -13,7 +18,9 @@
         <p>{{$comic->description}}</p>
     </div>
 
-    <form action="{{ route('comics.destroy', $comic->id) }}" method="POST">
+    @auth
+        
+    <form action="{{ route('admin.comics.destroy', $comic->id) }}" method="POST">
 
         @csrf
         @method('DELETE')
@@ -21,6 +28,9 @@
         <button type="submit">elimina</button>
     
     </form>
+
+    @endauth
+
 
 @endsection
 
